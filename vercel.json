@@ -10,6 +10,22 @@
       {
         "src": "/(.*)",
         "dest": "./index.js"
+      },
+      {
+        "src": "/login(.*)",
+        "dest": "./index.js"
+      },
+      {
+        "src": "/user/signup(.*)",
+        "dest": "./index.js"
+      },
+      {
+        "src": "/user/login(.*)",
+        "dest": "./index.js"
+      },
+      {
+        "src": "/user/profile(.*)",
+        "dest": "./index.js"
       }
     ]
   }
