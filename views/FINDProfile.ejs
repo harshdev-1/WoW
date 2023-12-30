@@ -85,6 +85,12 @@
                         <div class="pro-img"><img src="/image/default.png" alt="User Profile Image" class="img-fluid"></div>
                         <h3 class="m-b-0"><%= user.username %></h3>
                         <p><%= user.email  %></p>
+                        <% const followUrl = `/user/add-follower/${user.username}`; %>
+                        <div id="follow-link-container">
+                            <a href="<%= followUrl %>" class="btn btn-primary">
+                               Follow
+                            </a>
+                        </div>
                         <div class="row text-center m-t-20">
                             <div class="col-lg-4 col-md-4 m-t-20 count-column">
                                 <h3 class="m-b-0 font-light"><%= user.post.length %></h3>
@@ -119,6 +125,25 @@
             </div>
         </div>
     </div>
+    <!-- Other HTML code above this line -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const userProfile = <%= JSON.stringify(user) %>; // Assuming user contains the user's information
+
+        const followUrl = `/user/add-follower/${userProfile.username}`;
+
+        const followLink = `<a href="${followUrl}">Follow</a>`;
+
+        const container = document.getElementById("follow-link-container");
+
+        // Append the followLink HTML to the container
+        container.innerHTML = followLink;
+    });
+</script>
+
+<!-- Other HTML code below this line -->
+
     <%- include('./partials/script') %>
 </body>
 </html>
