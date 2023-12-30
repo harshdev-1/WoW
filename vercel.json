@@ -1,4 +1,16 @@
 {
-    "rewrites":[{"source":"/(.*)", "destination":"./index.js"}]
+    "version": 2,
+    "builds": [
+      {
+        "src": "nuxt.config.js",
+        "use": "@nuxtjs/vercel-builder",
+        "config": {
+          "serverFiles": ["server-middleware/**"]
+        }
+      },
+      {
+        "src": "api/**/*.js",
+        "use": "@vercel/node"
+      }
+    ]
 }
-  

@@ -19,6 +19,10 @@ const userSchema = new Schema({
   post:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"Post"
+  }],
+  follower:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User"
   }]
 }, { timestamps: true });
 

@@ -83,24 +83,8 @@
                     <img class="card-img-top img-fluid" src="https://i.imgur.com/K7A78We.jpg" alt="Card image cap">
                     <div class="card-body little-profile text-center">
                         <div class="pro-img"><img src="/image/default.png" alt="User Profile Image" class="img-fluid"></div>
-                        <h3 class="m-b-0"><%= username %></h3>
-                        <p><%= email  %></p>
-                        <form action="/user/post" method="post" class="mb-4" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Post</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Post..." name="PostText">
-                            </div>
-                            <div class="form-group">
-                                <input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Post</button>
-                        </form>
-                        <form action="/user/logout" method="post">
-                            <button type="submit" class="m-t-10 waves-effect waves-dark btn btn-danger btn-md btn-rounded" data-abc="true">Logout</button>
-                        </form>
-                        <form action="/user/" method="get">
-                            <button type="submit" class="m-t-20 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Find User</button>
-                        </form>
+                        <h3 class="m-b-0"><%= user.username %></h3>
+                        <p><%= user.email  %></p>
                         <div class="row text-center m-t-20">
                             <div class="col-lg-4 col-md-4 m-t-20 count-column">
                                 <h3 class="m-b-0 font-light"><%= user.post.length %></h3>
@@ -118,8 +102,7 @@
                     </div>
                 </div>
                 <% if (user.post && user.post.length > 0) { %>
-                    <% user.post.forEach(function(post) { %>
-                       
+                    <% post.post.forEach(function(post) { %>
                       <div class="card" style="margin-top: 20px;">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
@@ -131,7 +114,7 @@
                     <% }) %>
                   <% } else { %>
                     <p>No posts available.</p>
-                  <% } %>        
+                  <% } %>
                   
             </div>
         </div>
