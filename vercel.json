@@ -1,23 +1,14 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node-bridge"
-    },
-    {
-      "src": "routes/userRoutes.js",
-      "use": "@vercel/node-bridge"
-    }
+  "rewrites": [
+    { "source": "/user/(.*)", "destination": "/routes/userRoutes.js/$1" },
+    { "source": "/(.*)", "destination": "/$1" }
   ],
-  "routes": [
-    {
-      "src": "/user/(.*)",
-      "dest": "/routes/userRoutes.js/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+  "functions": {
+    "api/index.js": {
+      "runtime": "vercel-node@16"
     }
-  ]
+  },
+  "env": {
+    "MONGODB_URI": "mongodb+srv://harsh:harsh1234@inportant.gaqsygs.mongodb.net/?retryWrites=true&w=majority"
+  }
 }
