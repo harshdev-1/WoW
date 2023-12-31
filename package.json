@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider ncc build index.js"
   },
   "author": "",
   "license": "ISC",
