@@ -192,7 +192,7 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.status(401).render('unauthorized', { message: 'Unauthorized' });
+  res.redirect('/')
 }
 
 module.exports = router;
