@@ -5,7 +5,7 @@
     <style>
         body {
             background-color: #d7dfe3;
-            color: #ffffff; /* Set the default text color to white */
+            color: #ffffff;
         }
 
         .padding {
@@ -26,7 +26,7 @@
 
         .card-body {
             padding: 1.25rem;
-            color: #000000; /* Set the text color for the card body to black */
+            color: #000000;
         }
 
         .pro-img {
@@ -82,13 +82,13 @@
                 <div class="card card-no-border">
                     <img class="card-img-top img-fluid" src="https://i.imgur.com/K7A78We.jpg" alt="Card image cap">
                     <div class="card-body little-profile text-center">
-                        <div class="pro-img"><img src="/image/default.png" alt="User Profile Image" class="img-fluid"></div>
+                        <div class="pro-img"><img src="<%= user.profileImg %>" alt="/image/default.jpg" class="img-fluid"></div>
                         <h3 class="m-b-0"><%= user.username %></h3>
-                        <p><%= user.email  %></p>
+                        <p><%= user.email %></p>
                         <% const followUrl = `/user/add-follower/${user.username}`; %>
                         <div id="follow-link-container">
                             <a href="<%= followUrl %>" class="btn btn-primary">
-                               Follow
+                                <%= follow %>
                             </a>
                         </div>
                         <div class="row text-center m-t-20">
@@ -101,48 +101,30 @@
                                 <small>Followers</small>
                             </div>
                             <div class="col-lg-4 col-md-4 m-t-20 count-column">
-                                <h3 class="m-b-0 font-light">0</h3>
+                                <h3 class="m-b-0 font-light"><%= user.following.length %></h3>
                                 <small>Following</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <% if (user.post && user.post.length > 0) { %>
-                    <% post.post.forEach(function(post) { %>
-                      <div class="card" style="margin-top: 20px;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title"><%= post.postText %></h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <% user.post.forEach(function(post) { %>
+                        <div class="card" style="margin-top: 20px;">
+                            <img src="<%= post.imageUrl %>" class="card-img-top" alt="Post Image">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= post.postTitle %></h5>
+                                <p class="card-text"><%= post.postText %></p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
-                      </div>
                     <% }) %>
-                  <% } else { %>
+                <% } else { %>
                     <p>No posts available.</p>
-                  <% } %>
-                  
+                <% } %>
             </div>
         </div>
     </div>
     <!-- Other HTML code above this line -->
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const userProfile = <%= JSON.stringify(user) %>; // Assuming user contains the user's information
-
-        const followUrl = `/user/add-follower/${userProfile.username}`;
-
-        const followLink = `<a href="${followUrl}">Follow</a>`;
-
-        const container = document.getElementById("follow-link-container");
-
-        // Append the followLink HTML to the container
-        container.innerHTML = followLink;
-    });
-</script>
-
-<!-- Other HTML code below this line -->
 
     <%- include('./partials/script') %>
 </body>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+        
+        .followers {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+        
+        li:last-child {
+            border-bottom: none;
+        }
+        
+    </style>
+    <title>Follower Page</title>
+</head>
+<body>
+    <header>
+        <h1>Follower Page</h1>
+    </header>
+    <section class="followers">
+        <h2>Your Followers</h2>
+
+        <ul>
+            <% if (data.following && data.following.length > 0) { %>
+                <% data.following.forEach(function(following) { %>
+                    <li><%= following.username %></li>
+                <% }) %>
+            <% } else { %>
+                <li>No following available.</li>
+            <% } %>
+        </ul>
+        
+    </section>
+</body>
+</html>

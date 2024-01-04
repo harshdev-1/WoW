@@ -8,6 +8,9 @@ const postSchema = new mongoose.Schema({
   },
   postText:{
     type:String
+  },
+  postTitle:{
+    type:String
   }
   // Add more fields as needed
 },{ timestamps: true });

@@ -9,7 +9,7 @@ const userSchema = new Schema({
   password: String,
   profileImg: {
     type: String,
-    default: "/image/default.png"
+    default: "/image/default.jpg"
   },
   role: {
     type: String,
@@ -21,6 +21,10 @@ const userSchema = new Schema({
     ref:"Post"
   }],
   follower:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User"
+  }],
+  following:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"User"
   }]

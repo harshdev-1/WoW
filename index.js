@@ -36,13 +36,28 @@ passport.deserializeUser(User.deserializeUser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware function to check if user is authenticated
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+}
+
 // Set up routes
 app.get('/', (req, res) => {
-  res.render('index');
+  if (req.isAuthenticated()) {
+    return res.render('index', { username: req.user.username });
+  }
+  res.render('index', { username: 'sign in' });
 });
 
+
 app.get("/login", (req, res) => {
-  res.render('login');
+  if (req.isAuthenticated()) {
+    return res.render('index', { username: req.user.username });
+  }
+  res.render('login', { username: 'sign in' });
 });
 
 // Mount the userRoutes under the '/user' path
