@@ -52,7 +52,6 @@ app.get('/', (req, res) => {
   res.render('index', { username: 'sign in' });
 });
 
-
 app.get("/login", (req, res) => {
   if (req.isAuthenticated()) {
     return res.render('index', { username: req.user.username });
