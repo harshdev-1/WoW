@@ -102,7 +102,7 @@ router.get('/Profile', isLoggedIn, async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate('post');
 
-    res.render('Profile', { user, username: req.user.username, email: req.user.email,img:req.user.profileImg });
+    res.render('profile', { user, username: req.user.username, email: req.user.email,img:req.user.profileImg });
   } catch (error) {
     console.error(error);
     res.status(500).render('error', { message: 'Internal Server Error' });
