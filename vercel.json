@@ -1,9 +1,10 @@
 {
-  "rewrites": [
-    { "source": "/user/(.*)", "destination": "/routes/userRoutes.js/$1" },
-    { "source": "/(.*)", "destination": "/$1" }
+  "version":2,
+  "name":"Spekss",
+  "builds":[
+    {"src":"index.js","use":"@vercel/node"}
   ],
-  "env": {
-    "MONGODB_URI": "mongodb+srv://harsh:harsh1234@inportant.gaqsygs.mongodb.net/?retryWrites=true&w=majority"
-  }
+  "routes":[
+    {"src":"/(.*)","dest":"/index.js"}
+  ]
 }

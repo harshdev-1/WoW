@@ -47,13 +47,21 @@
 
     <form action="/user/update/post/<%= PostId %>" method="post">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Enter the title" required>
+        <input type="text" id="title" name="title" placeholder="<%= tiltle.postTitle %>" required>
 
         <label for="content">Content:</label>
-        <textarea id="content" name="content" placeholder="Enter the post content" rows="8" required></textarea>
+        <textarea id="content" name="content" placeholder="<%= tiltle.postText %>" aria-valuenow="<%= tiltle.postText %>" rows="8" required></textarea>
 
-        <button type="submit">Create Post</button>
+        <button type="submit">Update Post</button>
     </form>
-
+    <script>
+        const tiltle = document.querySelector('#title')
+        const text = document.querySelector('#content')
+        function hak(){
+            tiltle.value = `<%= tiltle.postTitle %>`
+            text.value = `<%= tiltle.postText %>`
+        }
+        hak()
+    </script>
 </body>
 </html>

@@ -273,10 +273,10 @@ router.post('/logout', function (req, res) {
   });
 });
 
-router.get('/edit/post/:PostId',isLoggedIn,(req,res)=>{
-  const tiltle = Post.findOne({_id:req.params.PostId})
+router.get('/edit/post/:PostId',isLoggedIn,async function(req,res){
+  const tiltle = await Post.findOne({ _id: req.params.PostId })
   console.log(tiltle);
-  res.render("updatePost",{PostId:req.params.PostId})
+  res.render("updatePost",{PostId:req.params.PostId,tiltle})
 })
 
 router.get('/chat',(req,res)=>{
@@ -287,6 +287,7 @@ router.get("/account/setting", isLoggedIn, function (req, res) {
   res.render('accountSetting',{userPhoto:req.user.profileImg});
 });
 const multer = require('multer');
+const post = require('../models/postModel');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
